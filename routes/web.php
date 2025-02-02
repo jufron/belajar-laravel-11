@@ -15,4 +15,6 @@ Route::controller(UserController::class)->group( function () {
     Route::get('user-table', 'userTable');
     Route::get('user-yajra-datatable', 'userYajraDatatable');
     Route::get('getuser', 'getData')->name('get.user');
+    Route::get('user/{id}', 'show')->name('get.user.id');
+    Route::post('user', 'store')->name('store.user');
 });
