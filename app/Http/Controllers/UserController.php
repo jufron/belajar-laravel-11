@@ -13,7 +13,7 @@ use Yajra\DataTables\EloquentDataTable;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -112,6 +112,52 @@ class UserController extends Controller
             return response()->json([
                 'status' => 'success',
                 'data' => $user
+            ], 200);
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'User tidak ditemukan'
+            ], 404);
+        }
+    }
+
+    public function update (Request $request, $id)
+    {
+        Log::info($request->all());
+
+        $request->validate([
+            'name'      => ['required', 'string', 'max:255'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $id],
+            'password'  => ['nullable', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user = User::findOrFail($id);
+
+        // Only include validated fields
+        $userData = $request->only(['name', 'email']);
+
+        // Only update password if it's provided
+        if ($request->filled('password')) {
+            $userData['password'] = Hash::make($request->password);
+        }
+
+        $user->update($userData);
+
+        return response()->json([
+            'message'   => 'User Berhasil Diupdate',
+            'data'      => $user,
+        ], 200);
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            $user->delete();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'User Berhasil Dihapus'
             ], 200);
         } catch (ModelNotFoundException $e) {
             return response()->json([

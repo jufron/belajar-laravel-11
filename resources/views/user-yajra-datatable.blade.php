@@ -129,6 +129,69 @@
         </div>
     </div>
 
+    {{-- todo Modal for update user --}}
+    <div class="modal fade" tabindex="-1" id="userEditModal" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name-edit" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name-edit">
+                        <div id="invalid-name-edit" class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email-edit" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email-edit">
+                        <div id="invalid-email-edit" class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password-edit" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password-edit">
+                        <div id="invalid-password-edit" class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password_confirmation-edit" class="form-label">Password Confirmation</label>
+                        <input type="password" class="form-control" id="password_confirmation-edit">
+                        <div id="invalid-password-confirm-edit" class="invalid-feedback"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="update-user">
+                        <span id="loading-button-update" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- todo Modal for delete user --}}
+    <div class="modal fade" tabindex="-1" id="userDeleteModal" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this user?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="delete-user">
+                        <span id="loading-button-delete" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- ? frmwork bootstrap 5 --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -149,6 +212,8 @@
     {{-- ? myscript --}}
     <script src="{{ asset('js/user.js') }}"></script>
     <script src="{{ asset('js/user-show.js') }}"></script>
+    <script src="{{ asset('js/user-edit.js') }}"></script>
+    <script src="{{ asset('js/user-delete.js') }}"></script>
 
   </body>
 </html>

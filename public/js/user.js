@@ -88,25 +88,26 @@ $(document).ready(function() {
 
     // todo form validate error
     function resetValidateForm () {
-        formInputName.removeClass('is-invalid');
-        formInvalidTextName.text('');
+        formInputName.classList.remove('is-invalid');
+        formInvalidTextName.textContent = '';
 
-        formInputEmail.removeClass('is-invalid');
-        formInvalidTextEmail.text('');
+        formInputEmail.classList.remove('is-invalid');
+        formInvalidTextEmail.textContent = '';
 
-        formInputPassword.removeClass('is-invalid');
-        formInvalidTextPassword.text('');
+        formInputPassword.classList.remove('is-invalid');
+        formInvalidTextPassword.textContent = '';
 
-        formInputConfirmPassword.removeClass('is-invalid');
-        formInvalidTextPasswordConfirmation.text('');
+        formInputConfirmPassword.classList.remove('is-invalid');
+        formInvalidTextPasswordConfirmation.textContent = '';
     }
 
-    function renderLoading (state) {
+
+    function renderLoading(state) {
         if (state) {
-            buttonModalSaveDataLoading.show();
+            buttonModalSaveDataLoading.style.display = 'block';
             buttonModalSaveData.disabled = true;
         } else {
-            buttonModalSaveDataLoading.hide();
+            // buttonModalSaveDataLoading.style.display = 'none';
             buttonModalSaveData.disabled = false;
         }
     }
@@ -161,20 +162,18 @@ $(document).ready(function() {
         renderLoading(true);
         resetValidateForm();
 
-        const formData = {
-            name: formInputName.val() ?? '',
-            email: formInputEmail.val() ?? '',
-            password: formInputPassword.val() ?? '',
-            password_confirmation: formInputConfirmPassword.val() ?? '',
-        };
-
         ajaxRequest = $.ajax({
             url: $(this).attr('data-url'),
             headers: {
                 'X-CSRF-TOKEN': csrfToken
             },
             method: 'POST',
-            data: formData,
+            data: {
+                name: formInputName.val() ?? '',
+                email: formInputEmail.val() ?? '',
+                password: formInputPassword.val() ?? '',
+                password_confirmation: formInputConfirmPassword.val() ?? '',
+            },
             success: function(response) {
                 renderLoading(false);
 
@@ -188,16 +187,24 @@ $(document).ready(function() {
                 renderLoading(false);
                 const errors = xhr.responseJSON.errors;
 
-                errors.name ? formInputName.addClass('is-invalid') : '';
+                errors.name
+                    ? formInputName.addClass('is-invalid')
+                    : formInputName.removeClass('is-invalid');
                 formInvalidTextName.text(errors.name ? errors.name[0] : '');
 
-                errors.email ? formInputEmail.addClass('is-invalid') : '';
+                errors.email
+                    ? formInputEmail.addClass('is-invalid')
+                    : formInputEmail.removeClass('is-invalid');
                 formInvalidTextEmail.text(errors.email ? errors.email[0] : '');
 
-                errors.password ? formInputPassword.addClass('is-invalid') : '';
+                errors.password
+                    ? formInputPassword.addClass('is-invalid')
+                    : formInputPassword.removeClass('is-invalid');
                 formInvalidTextPassword.text(errors.password ? errors.password[0] : '');
 
-                errors.password_confirmation ? formInputConfirmPassword.addClass('is-invalid') : '';
+                errors.password_confirmation
+                    ? formInputConfirmPassword.addClass('is-invalid')
+                    : formInputConfirmPassword.removeClass('is-invalid');
                 formInvalidTextPasswordConfirmation.text(errors.password_confirmation ? errors.password_confirmation[0] : '');
             }
         });
