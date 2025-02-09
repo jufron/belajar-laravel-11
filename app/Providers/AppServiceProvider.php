@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,10 +17,12 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
-     */
+    * Bootstrap any application services.
+    */
     public function boot(): void
     {
-        //
+        Event::listen('event.*', function (string $eventName, array $data) {
+            Log::info("Event Terpanggil: {$eventName}", $data);
+        });
     }
 }
