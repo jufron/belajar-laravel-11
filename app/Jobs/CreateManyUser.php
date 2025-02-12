@@ -64,4 +64,12 @@ class CreateManyUser implements ShouldQueue, ShouldBeUnique
             ". Trace: " . $exception->getTraceAsString()
         );
     }
+
+    /**
+     * Get the unique ID for the job.
+    */
+    public function uniqueId(): string
+    {
+        return $this->user->id;
+    }
 }
