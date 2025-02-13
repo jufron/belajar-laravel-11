@@ -21,7 +21,7 @@ class UpdateProductPrice implements ShouldQueue, ShouldBeUniqueUntilProcessing
         public float $newPrice
     )
     {
-        //
+        $this->onQueue('processing');
     }
 
     /**

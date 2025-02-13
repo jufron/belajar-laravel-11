@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Jobs\CreateManyUser;
 use App\Jobs\ProcessPodcast;
 use App\Jobs\ReportCSV;
@@ -34,3 +35,5 @@ Route::get('process/podcast', function () {
     ProcessPodcast::dispatch();
     return '<h1>Sedang Memproses</h1>';
 });
+
+Route::get('produk', [ProductController::class, 'store']);
