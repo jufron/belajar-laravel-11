@@ -14,7 +14,7 @@ class StoreMetadata implements ShouldQueue
     public $maxExceptions = 3;
 
     /**
-     * Create a new job instance.
+     * * Create a new job instance.
      */
     public function __construct(
         public $productID

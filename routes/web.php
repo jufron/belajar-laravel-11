@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ProductController;
 use App\Jobs\CreateManyUser;
 use App\Jobs\ProcessPodcast;
@@ -37,3 +38,10 @@ Route::get('process/podcast', function () {
 });
 
 Route::get('produk', [ProductController::class, 'store']);
+
+Route::controller(ImportController::class)->group(function () {
+    // Route::get('userImport', 'test');
+    Route::get('/import', 'index')->name('import.form');
+    Route::post('/import', 'import')->name('import');
+    Route::get('/progress/{batchId}', 'getProgress')->name('progress');
+});
