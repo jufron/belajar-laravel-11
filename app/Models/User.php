@@ -3,10 +3,15 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Events\UserSaved;
+use App\Events\UserDeleted;
+use App\Observers\UserObserver;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
+#[ObservedBy([UserObserver::class])]
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -33,6 +38,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    // protected $dispatchesEvents = [
+    //     'saved' => UserSaved::class,
+    //     'deleted' => UserDeleted::class,
+    // ];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -45,4 +55,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // protected static function booted () : void
+    // {
+    //     static::deleted(function (User $user) {
+    //         nama class listener dispatch
+    //     });
+
+    //     static::created(function (User $user) {
+    //         nama class listener dispatch
+    //     });
+    // }
 }
