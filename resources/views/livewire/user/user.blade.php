@@ -1,5 +1,5 @@
-<div>
+<div class="container">
     <h1>daftar user</h1>
 
-    <a href="{{ route('user-tambah') }}" wire:navigate>tambah</a>
+    <a class="btn btn-primary" href="{{ route('user-tambah') }}" wire:navigate>tambah</a>
 </div>
