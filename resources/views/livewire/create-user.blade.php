@@ -1,11 +1,4 @@
 <form wire:submit.prevent="save">
-    @if (session()->has('message'))
-        <div class="col-md-5">
-            <div class="alert alert-success" role="alert">
-                {{ session('message') }}
-            </div>
-        </div>
-    @endif
     <div class="row">
         {{-- * name --}}
         <div class="col-md-5 my-2">

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Livewire\Component;
 
@@ -12,20 +13,16 @@ class CreateUser extends Component
     public string $password = '';
     public string $password_confirmation = '';
 
+    protected function rules () : array
+    {
+        return (new UserRequest())->rules();
+    }
+
     public function save ()
     {
-        $this->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+        $dataValidated = $this->validate();
 
-        // Logic to save the user would go here, e.g.:
-        User::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => bcrypt($this->password),
-        ]);
+        User::create($dataValidated);
 
         session()->flash('message', 'User created successfully!');
 
