@@ -9,12 +9,12 @@
             <label for="name" class="form-label">Nama Produk</label>
             <input
                 type="text"
-                class="form-control @error('nama_produk') is-invalid @enderror"
+                class="form-control @error('form.nama_produk') is-invalid @enderror"
                 id="name"
-                wire:model="nama_produk"
+                wire:model="form.nama_produk"
                 placeholder="masukkan nama produk"
             />
-            @error('nama_produk')
+            @error('form.nama_produk')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -25,12 +25,12 @@
             <label for="harga" class="form-label">Harga</label>
             <input
                 type="number"
-                class="form-control @error('harga') is-invalid @enderror"
+                class="form-control @error('form.harga') is-invalid @enderror"
                 id="harga"
-                wire:model="harga"
+                wire:model="form.harga"
                 placeholder="masukkan harga"
             />
-            @error('harga')
+            @error('form.harga')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -41,12 +41,12 @@
             <label for="stok" class="form-label">Stok</label>
             <input
                 type="number"
-                class="form-control @error('stok') is-invalid @enderror"
+                class="form-control @error('form.stok') is-invalid @enderror"
                 id="stok"
-                wire:model="stok"
+                wire:model="form.stok"
                 placeholder="masukkan stok"
             />
-            @error('stok')
+            @error('form.stok')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -56,13 +56,13 @@
         <div class="my-2">
             <label for="deskripsi" class="form-label">Deskripsi</label>
             <textarea
-                class="form-control @error('deskripsi') is-invalid @enderror"
+                class="form-control @error('form.deskripsi') is-invalid @enderror"
                 id="deskripsi"
-                wire:model="deskripsi"
+                wire:model="form.deskripsi"
                 placeholder="masukkan deskripsi"
                 rows="3"
             ></textarea>
-            @error('deskripsi')
+            @error('form.deskripsi')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>

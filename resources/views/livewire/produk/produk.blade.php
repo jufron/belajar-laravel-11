@@ -17,7 +17,7 @@
     <div class="modal fade" id="modal-add-produk" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <livewire:produk.produk-form />
+                <livewire:produk.create-produk />
             </div>
         </div>
     </div>
