@@ -10,6 +10,7 @@
                 <x-navs.nav-link href="{{ route('about') }}" label="About" route="about" />
                 <x-navs.nav-link href="{{ route('contact') }}" label="Contact" route="contact" />
                 <x-navs.nav-link href="{{ route('user') }}" label="User" route="user" />
+                <x-navs.nav-link href="{{ route('produk') }}" label="Produk" route="produk" />
             </ul>
         </div>
     </div>

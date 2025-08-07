@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\Attributes\Validate;
 
 class CreateUser extends Component
 {
@@ -16,6 +17,11 @@ class CreateUser extends Component
     protected function rules () : array
     {
         return (new UserRequest())->rules();
+    }
+
+    protected function messages () : array
+    {
+        return (new UserRequest())->messages();
     }
 
     public function save ()

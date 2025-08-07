@@ -27,4 +27,18 @@ class UserRequest extends FormRequest
             'password' => 'required|string|min:8|confirmed',
         ];
     }
+
+    public function messages(): array
+    {
+        // rule wajib pake bahasa infoneisa
+        return [
+            'name.required' => 'Nama wajib diisi.',
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Email sudah terdaftar.',
+            'password.required' => 'Password wajib diisi.',
+            'password.min' => 'Password minimal 8 karakter.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
+        ];
+    }
 }
