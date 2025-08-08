@@ -28,11 +28,11 @@
         </thead>
         <tbody>
             @foreach ($user as $u)
-            <tr>
-                <th scope="row">{{ $loop->iteration }}</th>
-                <td>{{ $u->name }}</td>
-                <td>{{ $u->email }}</td>
-            </tr>
+            <livewire:user.user-list
+                :user="$u"
+                :key="$u->id"
+                :nomor="$loop->iteration"
+            />
             @endforeach
         </tbody>
     </table>

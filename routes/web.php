@@ -13,11 +13,12 @@ Route::get('hello', function () {
 Route::get('/', App\Livewire\Home::class)->name('home');
 Route::get('about', App\Livewire\About::class)->name('about');
 Route::get('contact', App\Livewire\Contact::class)->name('contact');
-Route::get('user', App\Livewire\User\User::class)->name('user');
 Route::get('produk', App\Livewire\Produk\Produk::class)->name('produk');
 
-Route::get('counter', App\Livewire\Counter::class);
-
-
-Route::get('user/tambah', App\Livewire\User\Tambah::class)->name('user-tambah');
-Route::get('user/edit/{id}', App\Livewire\User\Edit::class);
+Route::prefix('user')->group( function () {
+    Route::get('/', App\Livewire\User\User::class)->name('user');
+    Route::get('tambah', App\Livewire\User\Tambah::class)->name('user-tambah');
+    Route::get('show/{user}', App\Livewire\User\UserShow::class)->name('user-show');
+    ROute::get('edit/{user}', App\Livewire\User\UserEdit::class)->name('user-edit');
+    Route::get('delete/{user}', App\Livewire\User\UserDelete::class)->name('user-delete');
+});
