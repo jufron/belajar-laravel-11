@@ -31,6 +31,15 @@ class SearchUser extends Component
         $this->user = User::query()->where('name', 'like', '%' . $this->query . '%')->get();
     }
 
+    public function placeholder()
+    {
+        return <<<'HTML'
+        <div>
+            <h1>Loading</h1>
+        </div>
+        HTML;
+    }
+
     public function render()
     {
         // $user = User::query()

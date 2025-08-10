@@ -8,5 +8,5 @@
 
     <a class="btn btn-primary" href="{{ route('user-tambah') }}" wire:navigate>tambah</a>
 
-    <livewire:user.search-user />
+    <livewire:user.search-user lazy />
 </div>

@@ -5,12 +5,12 @@
             <label for="name" class="form-label">Username</label>
             <input
                 type="text"
-                class="form-control @error('name') is-invalid @enderror"
+                class="form-control @error('form.name') is-invalid @enderror"
                 id="name"
-                wire:model="name"
+                wire:model="form.name"
                 placeholder="masukkan nama"
             />
-            @error('name')
+            @error('form.name')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -21,12 +21,12 @@
             <label for="email" class="form-label">Email</label>
             <input
                 type="email"
-                class="form-control @error('email') is-invalid @enderror"
+                class="form-control @error('form.email') is-invalid @enderror"
                 id="email"
-                wire:model="email"
+                wire:model="form.email"
                 placeholder="masukkan email"
             />
-            @error('email')
+            @error('form.email')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -37,12 +37,12 @@
             <label for="password" class="form-label">Password</label>
             <input
                 type="password"
-                class="form-control @error('password') is-invalid @enderror"
+                class="form-control @error('form.password') is-invalid @enderror"
                 id="password"
-                wire:model="password"
+                wire:model="form.password"
                 placeholder="masukkan password"
             />
-            @error('password')
+            @error('form.password')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -53,13 +53,13 @@
             <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
             <input
                 type="password"
-                class="form-control @error('password_confirmation') is-invalid @enderror"
+                class="form-control @error('form.password_confirmation') is-invalid @enderror"
                 id="password_confirmation"
-                wire:model.defer="password_confirmation"
-                wire:model="password_confirmation"
+                wire:model.defer="form.password_confirmation"
+                wire:model="form.password_confirmation"
                 placeholder="konfirmasi password"
             />
-            @error('password_confirmation')
+            @error('form.password_confirmation')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
