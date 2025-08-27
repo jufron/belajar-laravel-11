@@ -11,8 +11,9 @@
     <h1 class="text-2xl font-bold text-center uppercase my-10">home</h1>
 
     <livewire:counter1 :count="0" label="counter-1" />
-    <livewire:counter1 :count="2" label="counter-2" />
-    <livewire:counter1 :count="5" label="counter-3" />
 
+    <div class="my-20">
+        <livewire:usersearch />
+    </div>
 </body>
 </html>

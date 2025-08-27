@@ -17,7 +17,7 @@ class ComponentAllTest extends TestCase
 
     public function test_component_counter1_excists_to_home()
     {
-        $this->get(route('home'))
+        $this->get('home')
             ->assertSeeLivewire('counter1');
     }
 
